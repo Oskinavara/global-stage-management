@@ -2,7 +2,7 @@
   <div class="app">
     <TheHeader @clear-list="clearList" />
     <InputForm @add-person="addPerson" />
-    <PersonsList :persons="persons" />
+    <PersonsList :persons="persons" @remove-person="removePerson" />
   </div>
 </template>
 
@@ -30,12 +30,15 @@ export default {
     clearList() {
       this.persons = [];
     },
-    addPerson(data) {
+    addPerson(person) {
       this.persons.push({
-        firstName: data.firstName,
-        lastName: data.lastName,
+        firstName: person.firstName,
+        lastName: person.lastName,
         id: Math.random(),
       });
+    },
+    removePerson(id) {
+      this.persons = this.persons.filter((person) => person.id !== id);
     },
   },
 };

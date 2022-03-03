@@ -1,6 +1,11 @@
 <template>
   <div class="persons-list">
-    <PersonBlock v-for="person in persons" :key="person.id" :person="person" />
+    <PersonBlock
+      v-for="person in persons"
+      :key="person.id"
+      :person="person"
+      @remove-person="removePerson"
+    />
   </div>
 </template>
 
@@ -14,6 +19,11 @@ export default {
     persons: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    removePerson(id) {
+      this.$emit("remove-person", id);
     },
   },
 };
