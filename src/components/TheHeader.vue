@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <HeaderActions @clear-list="clearList" />
+    <HeaderActions />
   </header>
 </template>
 
@@ -9,11 +9,6 @@ import HeaderActions from "./HeaderActions";
 export default {
   components: {
     HeaderActions,
-  },
-  methods: {
-    clearList() {
-      this.$emit("clear-list");
-    },
   },
 };
 </script>

@@ -4,27 +4,19 @@
       v-for="person in persons"
       :key="person.id"
       :person="person"
-      @remove-person="removePerson"
     />
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import PersonBlock from "./PersonBlock";
 export default {
   components: {
     PersonBlock,
   },
-  props: {
-    persons: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    removePerson(id) {
-      this.$emit("remove-person", id);
-    },
+  computed: {
+    ...mapGetters(['persons']),
   },
 };
 </script>

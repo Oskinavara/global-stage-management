@@ -2,13 +2,14 @@
   <div class="person-block">
     <span>{{ person.firstName }}</span>
     <span>{{ person.lastName }}</span>
-    <button @click="removePerson">
+    <button @click="removePerson(person.id)">
       <img src="@/assets/trash-solid.svg" alt="" />
     </button>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   props: {
     person: {
@@ -17,9 +18,7 @@ export default {
     },
   },
   methods: {
-    removePerson() {
-      this.$emit("remove-person", this.person.id);
-    },
+    ...mapActions(['removePerson']),
   },
 };
 </script>

@@ -2,11 +2,12 @@
   <div class="input-form">
     <input placeholder="First name" v-model="firstName" type="text" />
     <input placeholder="Last name" v-model="lastName" type="text" />
-    <button @click="addPerson">Add person</button>
+    <button @click="newPerson">Add person</button>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
   data() {
     return {
@@ -15,11 +16,12 @@ export default {
     };
   },
   methods: {
-    addPerson() {
-      this.$emit("add-person", {
+    ...mapActions(['addPerson']),
+    newPerson() {
+      this.addPerson({
         firstName: this.firstName,
         lastName: this.lastName,
-      });
+      })
       this.firstName = "";
       this.lastName = "";
     },

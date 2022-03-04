@@ -5,11 +5,10 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
   methods: {
-    clearList() {
-      this.$emit('clear-list');
-    }
+    ...mapActions(['clearList']),
   },
 };
 </script>
